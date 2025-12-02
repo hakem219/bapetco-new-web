@@ -10,6 +10,7 @@ export default defineConfig({
       // Force R3F to use the same React instance as the DOM
       react: 'react', 
       'react-dom': 'react-dom',
+      base:'bapetco-new-web'
     },
   },
 })
