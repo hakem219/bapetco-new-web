@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "operations": "Operations",
+    "sustainability": "Sustainability",
+    "media": "Media",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "title": {
+      "line1": "Powering Egypt's",
+      "line2": "Energy Future"
+    },
+    "subtitle": "Four decades of excellence in petroleum production, delivering sustainable energy solutions through innovation, safety, and operational excellence.",
+    "cta": {
+      "explore": "Explore Our Operations",
+      "about": "About BAPETCO"
+    },
+    "stats": {
+      "years": "Years",
+      "barrels": "Barrels/Day",
+      "employees": "Employees",
+      "safety": "Safety Record"
+    }
+  },
+  "about": {
+    "title": {
+      "line1": "Egypt's Premier",
+      "line2": "Petroleum Producer"
+    },
+    "intro": "BAPETCO (Badr Petroleum Company) is a joint venture between the Egyptian General Petroleum Corporation (EGPC) and international energy partners. Operating across Egypt's Western Desert, we specialize in exploration, development, and production of crude oil and natural gas.",
+    "highlights": {
+      "heritage": {
+        "title": "Heritage",
+        "subtitle": "Since 1983",
+        "description": "Established as a cornerstone of Egypt's petroleum industry, BAPETCO has consistently delivered energy resources that power the nation's growth."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "subtitle": "Advanced Technology",
+        "description": "We leverage cutting-edge exploration and production techniques, including 3D seismic imaging and enhanced oil recovery methods."
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "subtitle": "Environmental Commitment",
+        "description": "Our operations prioritize HSE standards, water management, and emissions reduction aligned with Egypt's Vision 2030."
+      }
+    },
+    "impact": {
+      "title": "Our Impact in Numbers",
+      "experience": "Years Experience",
+      "daily": "Barrels Daily",
+      "employees": "Employees",
+      "safety": "Safety Record"
+    }
+  },
+  "operations": {
+    "title": "Operations",
+    "description": "Comprehensive petroleum operations across Egypt's Western Desert",
+    "areas": {
+      "exploration": "Exploration & Discovery",
+      "explorationDesc": "Advanced seismic imaging and geological analysis for resource discovery",
+      "drilling": "Drilling & Production",
+      "drillingDesc": "State-of-the-art drilling operations ensuring optimal resource extraction",
+      "production": "Field Development",
+      "productionDesc": "Comprehensive field development strategies maximizing reservoir potential",
+      "facilities": "Production Facilities",
+      "facilitiesDesc": "Modern processing facilities ensuring highest quality standards",
+      "pipeline": "Pipeline Infrastructure",
+      "pipelineDesc": "Extensive pipeline network for efficient resource transportation",
+      "technology": "Technology & Innovation",
+      "technologyDesc": "Cutting-edge technology driving operational excellence"
+    }
+  },
+  "footer": {
+    "company": "BAPETCO",
+    "address": "127 Abdel Aziz Fahmy Street",
+    "location": "Heliopolis, Cairo, Egypt",
+    "quickLinks": "Quick Links",
+    "more": "More",
+    "connect": "Connect",
+    "phone": "Phone",
+    "email": "Email",
+    "copyright": "© 2025 Badr Petroleum Company (BAPETCO). All rights reserved."
+  }
+}
