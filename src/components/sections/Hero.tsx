@@ -190,21 +190,23 @@ const Hero: React.FC = () => {
           {/* Title with Split Text */}
           <h1 ref={titleRef} className="mb-8 perspective-1000">
             <LanguageFontWrapper variant="secondary">
-              <span className="block text-7xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight">
+              <span className="block text-6xl md:text-5xl lg:text-6xl font-black leading-none tracking-tight">
                 <span className="title-word inline-block gradient-text-premium">{t('hero.title.line1').split(' ')[0]}</span>
                 {' '}
                 <span className="title-word inline-block gradient-text-premium">{t('hero.title.line1').split(' ')[1]}</span>
               </span>
-              <span className="block text-7xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight mt-4">
+              <span className="block text-6xl md:text-5xl lg:text-6xl font-black leading-none tracking-tight mt-4">
                 <span className="title-word inline-block gradient-text-gold">{t('hero.title.line2').split(' ')[0]}</span>
                 {' '}
                 <span className="title-word inline-block gradient-text-gold">{t('hero.title.line2').split(' ')[1]}</span>
+                {' '}
+                <span className="title-word inline-block gradient-text-gold">{t('hero.title.line2').split(' ')[2]}</span>
               </span>
             </LanguageFontWrapper>
           </h1>
           
           {/* Subtitle */}
-          <p ref={subtitleRef} className="text-l md:text-l text-gray-300 max-w-5xl mx-auto mb-12 leading-relaxed">
+          <p ref={subtitleRef} className="text-l md:text-l text-gray-400 max-w-5xl mx-auto mb-12 leading-relaxed">
             <LanguageFontWrapper>
               {t('hero.subtitle')}
             </LanguageFontWrapper>

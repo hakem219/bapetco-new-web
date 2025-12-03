@@ -1,27 +1,23 @@
 // src/hooks/useScrollAnimation.ts
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
+import { useTranslation } from 'react-i18next';
+
+gsap.registerPlugin(ScrollTrigger);
+
+interface AnimationConfig {
+  from?: gsap.TweenVars;
+  to?: gsap.TweenVars;
+}
 
 interface ScrollAnimationOptions {
-  trigger?: string | Element | null;
   start?: string;
   end?: string;
   scrub?: boolean | number;
   pin?: boolean;
   markers?: boolean;
-  onEnter?: () => void;
-  onLeave?: () => void;
-  onEnterBack?: () => void;
-  onLeaveBack?: () => void;
-}
-
-interface AnimationConfig {
-  from: gsap.TweenVars;
-  to: gsap.TweenVars;
-  stagger?: number | gsap.StaggerVars;
-  delay?: number;
+  toggleActions?: string;
 }
 
 export const useScrollAnimation = (
@@ -29,161 +25,118 @@ export const useScrollAnimation = (
   animationConfig: AnimationConfig,
   options: ScrollAnimationOptions = {}
 ) => {
-  const containerRef = useRef<HTMLElement>(null);
-  const animationRef = useRef<gsap.core.Timeline | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
 
-  useGSAP(() => {
+  useEffect(() => {
     if (!containerRef.current) return;
 
-    const elements = containerRef.current.querySelectorAll(selector);
-    if (!elements.length) return;
+    const elements = gsap.utils.toArray(selector);
+    
+    // Adjust animations for RTL
+    const adjustedFrom = { ...animationConfig.from };
+    const adjustedTo = { ...animationConfig.to };
+    
+    // Convert x values for RTL
+    if (isRTL) {
+      if (adjustedFrom.x) adjustedFrom.x = -adjustedFrom.x;
+      if (adjustedTo.x) adjustedTo.x = -adjustedTo.x;
+    }
 
-    // Set initial state
-    gsap.set(elements, animationConfig.from);
-
-    // Create the animation
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: options.trigger || containerRef.current,
-        start: options.start || 'top 80%',
-        end: options.end || 'bottom 20%',
-        scrub: options.scrub || false,
-        pin: options.pin || false,
-        markers: options.markers || false,
-        onEnter: () => {
-          gsap.to(elements, {
-            ...animationConfig.to,
-            stagger: animationConfig.stagger || 0.1,
-            delay: animationConfig.delay || 0,
-            ease: animationConfig.to.ease || 'power4.out'
-          });
-          options.onEnter?.();
-        },
-        onLeave: options.onLeave,
-        onEnterBack: options.onEnterBack,
-        onLeaveBack: options.onLeaveBack,
-      }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const animations = elements.map((element: any) => {
+      return gsap.fromTo(element, adjustedFrom, {
+        ...adjustedTo,
+        scrollTrigger: {
+          trigger: element,
+          start: options.start || 'top 85%',
+          end: options.end || 'bottom 20%',
+          scrub: options.scrub || false,
+          pin: options.pin || false,
+          markers: options.markers || false,
+          toggleActions: options.toggleActions || 'play none none reverse',
+          invalidateOnRefresh: true,
+        }
+      });
     });
 
-    animationRef.current = tl;
+    // Refresh on language change
+    ScrollTrigger.refresh();
 
     return () => {
-      tl.kill();
+      animations.forEach(animation => animation.kill());
     };
-  }, [selector, animationConfig, options]);
-
-  const refresh = () => {
-    ScrollTrigger.refresh();
-  };
-
-  const kill = () => {
-    if (animationRef.current) {
-      animationRef.current.kill();
-    }
-  };
+  }, [selector, animationConfig, options, isRTL]);
 
   return {
     containerRef,
-    refresh,
-    kill
+    refresh: () => ScrollTrigger.refresh(),
   };
 };
 
-// Preset animations
-export const scrollAnimationPresets = {
-  fadeInUp: {
-    from: { y: 50, opacity: 0 },
-    to: { y: 0, opacity: 1, duration: 1 }
-  },
-  fadeInLeft: {
-    from: { x: -50, opacity: 0 },
-    to: { x: 0, opacity: 1, duration: 0.8 }
-  },
-  fadeInRight: {
-    from: { x: 50, opacity: 0 },
-    to: { x: 0, opacity: 1, duration: 0.8 }
-  },
-  scaleIn: {
-    from: { scale: 0, opacity: 0 },
-    to: { scale: 1, opacity: 1, duration: 0.6 }
-  },
-  rotateIn: {
-    from: { rotateY: -90, opacity: 0 },
-    to: { rotateY: 0, opacity: 1, duration: 1 }
-  },
-  slideInStagger: {
-    from: { y: 100, opacity: 0 },
-    to: { y: 0, opacity: 1, duration: 0.8, stagger: 0.2 }
-  }
-};
+// Direction-aware animation presets
+export const useDirectionalAnimation = () => {
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
 
-// Utility function for parallax scrolling
-export const useParallaxScroll = (speed: number = 0.5) => {
-  const elementRef = useRef<HTMLElement>(null);
-
-  useGSAP(() => {
-    if (!elementRef.current) return;
-
-    gsap.to(elementRef.current, {
-      yPercent: -50 * speed,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: elementRef.current,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
-  }, [speed]);
-
-  return elementRef;
-};
-
-// Utility function for text split animation
-export const useTextSplitAnimation = (
-  delay: number = 0,
-  staggerAmount: number = 0.05
-) => {
-  const textRef = useRef<HTMLElement>(null);
-
-  useGSAP(() => {
-    if (!textRef.current) return;
-
-    const text = textRef.current;
-    const originalText = text.innerText;
+  const fadeInStart = (element: string | HTMLElement, delay = 0) => {
+    const direction = isRTL ? 50 : -50;
     
-    // Split text into spans
-    const words = originalText.split(' ');
-    text.innerHTML = words
-      .map(word => `<span class="word-split">${word}</span>`)
-      .join(' ');
-
-    const splitWords = text.querySelectorAll('.word-split');
-
-    gsap.fromTo(splitWords,
-      { y: 20, opacity: 0 },
+    return gsap.fromTo(element,
+      { 
+        opacity: 0, 
+        x: direction,
+        y: 30
+      },
       {
-        y: 0,
         opacity: 1,
-        duration: 0.6,
-        stagger: staggerAmount,
+        x: 0,
+        y: 0,
+        duration: 1.2,
         delay,
-        ease: 'power4.out',
+        ease: 'expo.out',
+        clearProps: 'transform',
         scrollTrigger: {
-          trigger: text,
-          start: 'top 90%',
-          end: 'bottom 60%',
-          toggleActions: 'play none none reverse'
+          trigger: element,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+          invalidateOnRefresh: true,
         }
       }
     );
+  };
 
-    return () => {
-      text.innerText = originalText;
-    };
-  }, [delay, staggerAmount]);
+  const fadeInEnd = (element: string | HTMLElement, delay = 0) => {
+    const direction = isRTL ? -50 : 50;
+    
+    return gsap.fromTo(element,
+      { 
+        opacity: 0, 
+        x: direction,
+        y: 30
+      },
+      {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 1.2,
+        delay,
+        ease: 'expo.out',
+        clearProps: 'transform',
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+          invalidateOnRefresh: true,
+        }
+      }
+    );
+  };
 
-  return textRef;
+  return {
+    fadeInStart,
+    fadeInEnd,
+    isRTL
+  };
 };
-
-export default useScrollAnimation;

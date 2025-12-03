@@ -1,4 +1,177 @@
 {
+  "sustainability": {
+    "badge": "Sustainability",
+    "title": {
+      "line1": "Commitment to",
+      "line2": "Sustainability"
+    },
+    "subtitle": "Leading the energy transition with responsible operations aligned with Egypt's Vision 2030",
+    "initiatives": {
+      "environment": {
+        "title": "Environmental Management",
+        "description": "Comprehensive environmental protection programs across all operations",
+        "metric": "30%",
+        "metricLabel": "Emissions Reduced"
+      },
+      "water": {
+        "title": "Water Conservation",
+        "description": "Advanced water recycling and conservation technologies",
+        "metric": "45%",
+        "metricLabel": "Water Recycled"
+      },
+      "renewable": {
+        "title": "Renewable Energy",
+        "description": "Integration of solar and wind energy in our facilities",
+        "metric": "25%",
+        "metricLabel": "Clean Energy"
+      },
+      "biodiversity": {
+        "title": "Biodiversity Protection",
+        "description": "Preserving local ecosystems and wildlife habitats",
+        "metric": "100+",
+        "metricLabel": "Species Protected"
+      },
+      "community": {
+        "title": "Community Investment",
+        "description": "Supporting local communities through education and development",
+        "metric": "$5M+",
+        "metricLabel": "Annual Investment"
+      },
+      "hse": {
+        "title": "HSE Excellence",
+        "description": "World-class health, safety, and environmental standards",
+        "metric": "99.8%",
+        "metricLabel": "Safety Record"
+      }
+    },
+    "pathToNetZero": "Our Path to Net Zero",
+    "vision": {
+      "2025": "Carbon Neutral Operations in Key Facilities",
+      "2027": "50% Reduction in Water Consumption",
+      "2030": "Net Zero Emissions Target"
+    },
+    "downloadReport": "Download Sustainability Report",
+    "certifications": "Certified by International Standards"
+  },
+  "media": {
+    "badge": "Media Center",
+    "title": "Latest News & Updates",
+    "subtitle": "Stay informed with our latest achievements and industry insights",
+    "filters": {
+      "all": "All News",
+      "announcements": "Announcements",
+      "sustainability": "Sustainability",
+      "awards": "Awards",
+      "technology": "Technology",
+      "community": "Community"
+    },
+    "categories": {
+      "announcement": "Announcement",
+      "sustainability": "Sustainability",
+      "award": "Award",
+      "technology": "Technology",
+      "community": "Community",
+      "partnership": "Partnership"
+    },
+    "news": {
+      "item1": {
+        "title": "BAPETCO Achieves Record Production Milestone",
+        "excerpt": "Company surpasses 150,000 barrels per day for the first time in its history."
+      },
+      "item2": {
+        "title": "New Solar Initiative Reduces Carbon Footprint by 30%",
+        "excerpt": "Implementation of solar panels across production facilities marks significant environmental achievement."
+      },
+      "item3": {
+        "title": "BAPETCO Wins Excellence in Safety Award",
+        "excerpt": "Recognition for maintaining 99.8% safety record throughout operations."
+      },
+      "item4": {
+        "title": "AI-Powered Exploration Technology Deployed",
+        "excerpt": "Advanced machine learning algorithms enhance resource discovery capabilities."
+      },
+      "item5": {
+        "title": "Education Initiative Supports 500+ Local Students",
+        "excerpt": "Scholarship program expands to cover engineering and geology studies."
+      },
+      "item6": {
+        "title": "Strategic Partnership with International Energy Leaders",
+        "excerpt": "New collaboration to enhance technology transfer and operational excellence."
+      }
+    },
+    "readMore": "Read More",
+    "loadMore": "Load More News",
+    "resources": {
+      "gallery": {
+        "title": "Media Gallery",
+        "description": "Browse our collection of images and videos",
+        "button": "View Gallery"
+      },
+      "reports": {
+        "title": "Annual Reports",
+        "description": "Download our latest financial and sustainability reports",
+        "button": "View Reports"
+      },
+      "press": {
+        "title": "Press Kit",
+        "description": "Media resources and brand guidelines",
+        "button": "Download Kit"
+      }
+    }
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "title": "Get in Touch",
+    "subtitle": "Connect with us for inquiries, partnerships, or career opportunities",
+    "form": {
+      "title": "Send us a Message",
+      "name": "Your Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "john@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+20 123 456 7890",
+      "department": "Department",
+      "departments": {
+        "select": "Select Department",
+        "general": "General Inquiries",
+        "operations": "Operations",
+        "hr": "Human Resources",
+        "media": "Media Relations",
+        "sustainability": "Sustainability",
+        "procurement": "Procurement"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help you...",
+      "submit": "Send Message"
+    },
+    "info": {
+      "address": {
+        "title": "Address",
+        "line1": "127 Abdel Aziz Fahmy Street",
+        "line2": "Heliopolis, Cairo, Egypt"
+      },
+      "phone": {
+        "title": "Phone"
+      },
+      "email": {
+        "title": "Email"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "days": "Sunday - Thursday",
+        "time": "8:00 AM - 5:00 PM"
+      }
+    },
+    "map": {
+      "title": "Interactive Map",
+      "button": "View on Google Maps"
+    },
+    "social": {
+      "title": "Follow Us"
+    }
+  },
+
   "nav": {
     "home": "Home",
     "about": "About Us",
@@ -26,6 +199,7 @@
     }
   },
   "about": {
+    "top":"About BAPETCO",
     "title": {
       "line1": "Egypt's Premier",
       "line2": "Petroleum Producer"

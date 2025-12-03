@@ -1,5 +1,5 @@
 // src/App.tsx
-import { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Preload } from '@react-three/drei';
 import { useTranslation } from 'react-i18next';
@@ -39,7 +39,9 @@ function App() {
 
   useEffect(() => {
     // Set initial direction
-    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    const isRTL = i18n.language === 'ar';
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.lang = i18n.language;
     
     // Premium scroll setup
     ScrollTrigger.defaults({
@@ -60,8 +62,29 @@ function App() {
 
     return () => {
       clearTimeout(timer);
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
+  }, [i18n.language]);
+
+  // Handle language change and refresh ScrollTrigger
+  useEffect(() => {
+    const isRTL = i18n.language === 'ar';
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.lang = i18n.language;
+    
+    // Important: Refresh ScrollTrigger after language change
+    setTimeout(() => {
+      ScrollTrigger.refresh(true);
+      
+      // Force recalculation of all animations
+      ScrollTrigger.getAll().forEach(trigger => {
+        trigger.refresh();
+      });
+      
+      // Update all existing animations for RTL
+      if (isRTL) {
+        gsap.set('[data-gsap-rtl]', { clearProps: 'all' });
+      }
+    }, 100);
   }, [i18n.language]);
 
   // Smooth scroll behavior
@@ -123,18 +146,6 @@ function App() {
         </main>
         
         <Footer />
-      </div>
-
-      {/* Premium Cursor Effect (Optional) */}
-      <div className="pointer-events-none fixed inset-0 z-50">
-        <div 
-          className="cursor-glow absolute w-8 h-8 -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%)',
-            filter: 'blur(10px)',
-            mixBlendMode: 'screen'
-          }}
-        />
       </div>
     </div>
   );

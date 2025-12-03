@@ -35,13 +35,13 @@
   --color-slate-700: #475569;
   --color-slate-600: #64748b;
   
-  --color-gold-500: #85252a;
-  --color-gold-400: #992e34;
-  --color-gold-300: #b33b41;
-   --color-tiger-lily: #94201c;
-  --color-tiger-lily-dark: #701914;
-  --color-tiger-lily-light: #a8241d;
-
+  --color-gold-500: #b3702e;
+  --color-gold-400: #cc8f52;
+  --color-gold-300: #cca37a;
+  
+  --color-tiger-lily: #ff6b35;
+  --color-tiger-lily-dark: #b34724;
+  --color-tiger-lily-light: #e67045;
   
   /* Glass Surface Colors */
   --color-glass-white: rgba(255, 255, 255, 0.03);
