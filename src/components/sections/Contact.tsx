@@ -2,8 +2,6 @@
 import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import LanguageFontWrapper from '../LanguageFontWrapper';
 import Button from '../ui/Button';

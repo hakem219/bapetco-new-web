@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Preload } from '@react-three/drei';
 import { useTranslation } from 'react-i18next';
